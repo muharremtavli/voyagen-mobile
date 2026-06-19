@@ -15,13 +15,16 @@ VoyaGen Mobile, VoyaGen ekosisteminin React Native ve Expo ile geliştirilmiş m
 - **Modern UI/UX Tasarımı:** Karanlık mod (dark mode) destekli, şık ve modern bir tasarım dili.
 
 ### 📸 Ekran Görüntüleri
-*Uygulama içi ekranlardan bazı örnekler:*
+*(Gerçek mobil uygulama arayüzü ekran görüntülerini projeye ekledikten sonra aşağıdaki linkleri kendi görsellerinizle değiştirebilirsiniz)*
 
-**Yapay Zeka Rota Ekranı (AI Routes):**  
-![AI Routes Splash](assets/route_splash.png)
+**Ana Akış:**  
+![Ana Akış](screenshots/mobile_feed.png)
 
-**Akıllı Notlar Ekranı (Smart Notes):**  
-![Smart Notes Splash](assets/notes_splash.png)
+**Yapay Zeka Rota Oluşturucu:**  
+![AI Rota Planlayıcı](screenshots/mobile_ai_route.png)
+
+**Mesajlaşma:**  
+![DM Ekranı](screenshots/mobile_messages.png)
 
 ### 🚀 Hızlı Başlangıç
 
@@ -62,13 +65,16 @@ VoyaGen Mobile is the cross-platform mobile application companion for the VoyaGe
 - **Sleek UI/UX:** Built with a modern, dark-mode ready design system.
 
 ### 📸 Screenshots
-*Here are some examples of the app's interface:*
+*(Once you capture the actual UI screenshots, you can replace the placeholder paths below with your images)*
 
-**AI Route Splash:**  
-![AI Routes Splash](assets/route_splash.png)
+**Social Feed:**  
+![Social Feed](screenshots/mobile_feed.png)
 
-**Smart Notes Splash:**  
-![Smart Notes Splash](assets/notes_splash.png)
+**AI Trip Planner:**  
+![AI Trip Planner](screenshots/mobile_ai_route.png)
+
+**Direct Messaging:**  
+![Messages](screenshots/mobile_messages.png)
 
 ### 🚀 Quick Start
 

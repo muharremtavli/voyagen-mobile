@@ -18,13 +18,10 @@ VoyaGen Mobile, VoyaGen ekosisteminin React Native ve Expo ile geliştirilmiş m
 *(Gerçek mobil uygulama arayüzü ekran görüntülerini projeye ekledikten sonra aşağıdaki linkleri kendi görsellerinizle değiştirebilirsiniz)*
 
 **Ana Akış:**  
-![Ana Akış](screenshots/mobile_feed.png)
+![Ana Akış](screenshots/mobile_feed.jpeg)
 
 **Yapay Zeka Rota Oluşturucu:**  
-![AI Rota Planlayıcı](screenshots/mobile_ai_route.png)
-
-**Mesajlaşma:**  
-![DM Ekranı](screenshots/mobile_messages.png)
+![AI Rota Planlayıcı](screenshots/mobile_ai_route.jpeg)
 
 ### 🚀 Hızlı Başlangıç
 
@@ -68,13 +65,10 @@ VoyaGen Mobile is the cross-platform mobile application companion for the VoyaGe
 *(Once you capture the actual UI screenshots, you can replace the placeholder paths below with your images)*
 
 **Social Feed:**  
-![Social Feed](screenshots/mobile_feed.png)
+![Social Feed](screenshots/mobile_feed.jpeg)
 
 **AI Trip Planner:**  
-![AI Trip Planner](screenshots/mobile_ai_route.png)
-
-**Direct Messaging:**  
-![Messages](screenshots/mobile_messages.png)
+![AI Trip Planner](screenshots/mobile_ai_route.jpeg)
 
 ### 🚀 Quick Start
 

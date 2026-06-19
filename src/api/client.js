@@ -16,8 +16,7 @@ import { Platform } from 'react-native';
 //   iOS simulator    → localhost
 // For physical devices → use your local network IP (ipconfig / ifconfig)
 const getBaseUrl = () => {
-  // Change this to your computer's local IP for physical device testing
-  const LOCAL_IP = '10.192.18.57';
+  const LOCAL_IP = '10.60.136.56';
   const PORT = '8000';
 
   if (Platform.OS === 'android') {
@@ -34,9 +33,23 @@ const getBaseUrl = () => {
   return `http://${LOCAL_IP}:${PORT}/api/v1`;
 };
 
+export const getServerUrl = () => {
+  const LOCAL_IP = '10.60.136.56';
+  const PORT = '8000';
+  if (Platform.OS === 'android') return `http://${LOCAL_IP}:${PORT}`;
+  if (Platform.OS === 'web') return `http://localhost:${PORT}`;
+  return `http://${LOCAL_IP}:${PORT}`;
+};
+
+export const getImageUrl = (path) => {
+  if (!path) return null;
+  if (path.startsWith('http')) return path;
+  return `${getServerUrl()}${path.startsWith('/') ? '' : '/'}${path}`;
+};
+
 const apiClient = axios.create({
   baseURL: getBaseUrl(),
-  timeout: 15000,
+  timeout: 120000,
   headers: {
     'Content-Type': 'application/json',
   },

@@ -18,6 +18,25 @@ export const updateProfile = async (data) => {
   return response.data;
 };
 
+/** Update the current user's avatar. */
+export const updateAvatar = async (imageUri) => {
+  const formData = new FormData();
+  const filename = imageUri.split('/').pop();
+  const ext = filename.split('.').pop();
+  const mimeType = ext === 'png' ? 'image/png' : 'image/jpeg';
+
+  formData.append('file', {
+    uri: imageUri,
+    name: filename,
+    type: mimeType,
+  });
+
+  const response = await apiClient.post('/users/me/avatar', formData, {
+    headers: { 'Content-Type': 'multipart/form-data' },
+  });
+  return response.data;
+};
+
 /** Get another user's profile by ID. */
 export const getUserProfile = async (userId) => {
   const response = await apiClient.get(`/users/${userId}`);
@@ -57,6 +76,22 @@ export const getFollowing = async (userId) => {
 /** Get a user's posts. */
 export const getUserPosts = async (userId, skip = 0, limit = 20) => {
   const response = await apiClient.get(`/users/${userId}/posts`, {
+    params: { skip, limit },
+  });
+  return response.data;
+};
+
+/** Get liked posts */
+export const getLikedPosts = async (skip = 0, limit = 20) => {
+  const response = await apiClient.get(`/users/me/liked_posts`, {
+    params: { skip, limit },
+  });
+  return response.data;
+};
+
+/** Get saved posts */
+export const getSavedPosts = async (skip = 0, limit = 20) => {
+  const response = await apiClient.get(`/users/me/saved_posts`, {
     params: { skip, limit },
   });
   return response.data;

@@ -1,8 +1,8 @@
 /**
  * VoyaGen — Home Screen (Global Feed)
  *
- * Instagram-style vertical feed using FlatList.
- * Pull-to-refresh and load-more pagination.
+ * Premium Instagram-style vertical feed with travel-themed empty state,
+ * floating action concept, and smooth loading states.
  */
 
 import React, { useState, useEffect, useCallback } from 'react';
@@ -12,12 +12,18 @@ import {
   FlatList,
   RefreshControl,
   ActivityIndicator,
+  Animated,
+  Dimensions,
 } from 'react-native';
 import PostCard from '../components/PostCard';
 import COLORS from '../theme/colors';
+import { useTheme } from '../contexts/ThemeContext';
 import * as postsApi from '../api/posts';
 
+const { width: SW } = Dimensions.get('window');
+
 const HomeScreen = ({ navigation }) => {
+  const { colors } = useTheme();
   const [posts, setPosts] = useState([]);
   const [refreshing, setRefreshing] = useState(false);
   const [loadingMore, setLoadingMore] = useState(false);
@@ -68,21 +74,27 @@ const HomeScreen = ({ navigation }) => {
       <View
         style={{
           flex: 1,
-          backgroundColor: COLORS.bg,
+          backgroundColor: colors.bg,
           justifyContent: 'center',
           alignItems: 'center',
         }}
       >
-        <ActivityIndicator size="large" color={COLORS.primary} />
+        <View style={{ alignItems: 'center' }}>
+          <Text style={{ fontSize: 48, marginBottom: 16 }}>✈️</Text>
+          <ActivityIndicator size="large" color={colors.primary} />
+          <Text style={{ color: colors.muted, marginTop: 14, fontSize: 14 }}>
+            Gönderiler yükleniyor...
+          </Text>
+        </View>
       </View>
     );
   }
 
   return (
-    <View style={{ flex: 1, backgroundColor: COLORS.bg }}>
+    <View style={{ flex: 1, backgroundColor: colors.bg }}>
       <FlatList
         data={posts}
-        keyExtractor={(item) => item.id}
+        keyExtractor={(item) => String(item.id)}
         renderItem={({ item }) => (
           <PostCard post={item} onAuthorPress={handleAuthorPress} />
         )}
@@ -90,16 +102,16 @@ const HomeScreen = ({ navigation }) => {
           <RefreshControl
             refreshing={refreshing}
             onRefresh={onRefresh}
-            tintColor={COLORS.primary}
-            colors={[COLORS.primary]}
+            tintColor={colors.primary}
+            colors={[colors.primary]}
           />
         }
         onEndReached={onLoadMore}
         onEndReachedThreshold={0.3}
         ListFooterComponent={
           loadingMore ? (
-            <View style={{ paddingVertical: 20 }}>
-              <ActivityIndicator size="small" color={COLORS.primary} />
+            <View style={{ paddingVertical: 24 }}>
+              <ActivityIndicator size="small" color={colors.primary} />
             </View>
           ) : null
         }
@@ -109,21 +121,45 @@ const HomeScreen = ({ navigation }) => {
               flex: 1,
               justifyContent: 'center',
               alignItems: 'center',
-              paddingTop: 100,
+              paddingTop: 80,
+              paddingHorizontal: 40,
             }}
           >
-            <Text style={{ color: COLORS.muted, fontSize: 16 }}>
-              Henüz gönderi yok
+            <Text style={{ fontSize: 72, marginBottom: 20 }}>🌍</Text>
+            <Text
+              style={{
+                color: colors.text,
+                fontSize: 22,
+                fontWeight: '800',
+                textAlign: 'center',
+                marginBottom: 12,
+              }}
+            >
+              Keşfetmeye Hazır mısın?
             </Text>
             <Text
               style={{
-                color: COLORS.muted,
-                fontSize: 13,
-                marginTop: 6,
+                color: colors.muted,
+                fontSize: 15,
+                textAlign: 'center',
+                lineHeight: 24,
               }}
             >
-              İlk gönderiyi paylaşan sen ol! 🌍
+              Henüz gönderi yok. İlk gönderiyi paylaşan sen ol! {'\n'}
+              ✈️ Yeni yerler keşfet, anılarını paylaş
             </Text>
+            <View
+              style={{
+                marginTop: 32,
+                flexDirection: 'row',
+                justifyContent: 'center',
+                gap: 12,
+              }}
+            >
+              {['🏝️', '⛰️', '🗼', '🌅', '🏖️'].map((emoji, i) => (
+                <Text key={i} style={{ fontSize: 28 }}>{emoji}</Text>
+              ))}
+            </View>
           </View>
         }
       />

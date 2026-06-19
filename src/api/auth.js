@@ -25,11 +25,11 @@ export const register = async (data) => {
  * @returns {Promise<{ access_token: string, token_type: string }>}
  */
 export const login = async ({ username, password }) => {
-  const formData = new URLSearchParams();
-  formData.append('username', username);
-  formData.append('password', password);
+  // Manual URL encoding for React Native compatibility
+  // (URLSearchParams may not be available in all RN environments)
+  const body = `username=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}`;
 
-  const response = await apiClient.post('/auth/login', formData.toString(), {
+  const response = await apiClient.post('/auth/login', body, {
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded',
     },
